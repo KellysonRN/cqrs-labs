@@ -11,7 +11,6 @@ namespace DotNetProject.Api.Configurations.Extensions
         {
             ((IServiceCollection)services).Configure<EnvironmentConfiguration>(configuration);
 
-            // https://jasperfx.github.io/lamar/documentation/ioc/registration/auto-registration-and-conventions/
             services.Scan(_ =>
             {
                 _.Assembly("DotNetProject.Application");

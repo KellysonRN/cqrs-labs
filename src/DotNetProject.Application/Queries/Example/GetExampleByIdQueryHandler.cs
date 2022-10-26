@@ -39,6 +39,7 @@ public class GetExampleByIdQueryHandler : IRequestHandler<GetExampleByIdQuery, Q
         {
             return new QueryResult<Domain.Models.Example>(result: example, type: QueryResultTypeEnum.NotFound);
         }
+        
         return new QueryResult<Domain.Models.Example>(result: example, type: QueryResultTypeEnum.Success);
     }
 }

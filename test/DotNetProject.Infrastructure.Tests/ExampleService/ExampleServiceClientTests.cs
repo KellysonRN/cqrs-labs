@@ -51,6 +51,7 @@ public class ExampleServiceClientTests
         {
             SERVICE_URL = "https://localhost"
         });
+        
         var configuration = new MapperConfiguration(cfg => { cfg.AddProfile<ExampleProfile>(); });
         var mapper = new Mapper(configuration);
 

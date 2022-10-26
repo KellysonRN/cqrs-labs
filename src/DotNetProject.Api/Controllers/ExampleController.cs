@@ -23,14 +23,7 @@ public class ExampleController : Controller
     {
         _logger = logger;
         _mediator = mediator;
-    }
-
-    /*
-        ProducesResponseType helps Swagger be more verbose about what endpoints can return.
-        Summary - Short description about the endpoint which will show on the Swagger pill next to the name of the endpoint
-        Remarks - Long description or explanation about the endpoint which will show once the Swagger pill is opened
-        Param - name attribute needs to match the method parameter name and will add a description column to each parameter in Swagger
-    */
+    }   
 
     /// <summary>
     /// Get an Example by it's ID
@@ -52,11 +45,7 @@ public class ExampleController : Controller
         {
             Id = id,
         };
-        /*
-            Mediatr is not needed for an application to implement CQRS but it helps to 
-            implement and conform to the CQRS model.
-            While async in nature, performance is on par with other DI approaches (https://medium.com/swlh/dependency-injection-v-mediatr-a-simple-c-benchmark-32630ff864ea)
-        */
+       
         var result = await _mediator.Send(getExampleByIdQuery);
 
         if (result.Type == QueryResultTypeEnum.InvalidInput)
@@ -70,7 +59,7 @@ public class ExampleController : Controller
         }
 
         return new OkObjectResult(result.Result);
-    }
+    }  
 
     /// <summary>
     /// Update an Example's name by it's ID
@@ -108,6 +97,4 @@ public class ExampleController : Controller
 
         return new OkObjectResult(result.Result);
     }
-
 }
-
