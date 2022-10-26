@@ -1,51 +1,21 @@
-using CorrelationId.DependencyInjection;
-using CorrelationId.HttpClient;
-using DotNetProject.Api.HealthChecks;
-using DotNetProject.Api.Middleware.Logging;
-using Microsoft.AspNetCore.Mvc;
+﻿using Lamar.Microsoft.DependencyInjection;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace DotNetProject.Api;
 
-// Add services to the container.
-builder.Services.AddDefaultCorrelationId();
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddMvc();
-builder.Services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
-builder.Services.AddApiVersioning(o =>
+public class Program
 {
-    o.ReportApiVersions = true;
-    o.DefaultApiVersion = new ApiVersion(1, 0);
-    o.AssumeDefaultVersionWhenUnspecified = true;
-});
-builder.Services.AddOptions();
-builder.Services.AddHttpClient(string.Empty)
-    .AddCorrelationIdForwarding();
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
 
-builder.Services.AddHealthChecks().AddCheck<ReadinessCheck>("DotNetProject readiness", tags: new[] { "readiness" });
-builder.Services.AddCustomizedLogging();
-builder.Services.AddHealthChecks();
-
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .UseLamar()
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+                webBuilder.UseUrls("http://localhost:5000");
+            });
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
