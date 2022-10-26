@@ -14,7 +14,6 @@ namespace DotNetProject.Api.Configurations.Extensions
             // https://jasperfx.github.io/lamar/documentation/ioc/registration/auto-registration-and-conventions/
             services.Scan(_ =>
             {
-                _.TheCallingAssembly();
                 _.Assembly("DotNetProject.Application");
                 _.Assembly("DotNetProject.Infrastructure");
                 _.AddAllTypesOf<IValidator>();
@@ -24,6 +23,7 @@ namespace DotNetProject.Api.Configurations.Extensions
                 _.WithDefaultConventions();
                 _.LookForRegistries();
             });
+            
             services.AddTransient<IMediator, Mediator>();
             services.For<ServiceFactory>().Use(ctx => ctx.GetInstance);
         }

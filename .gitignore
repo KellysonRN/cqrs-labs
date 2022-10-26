@@ -1,4 +1,5 @@
 bin/
+out/
 obj/
 v15/
 *.csproj.user

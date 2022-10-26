@@ -22,8 +22,8 @@ public class ExampleRepository : IExampleRepository
     {
         var query = Sql.UpdateExampleNameById.Value;
 
-        using (var conn = new SqlConnection(this._configuration.Value.SQL_CONNECTION_STRING))
-        {
+        //using (var conn = new SqlConnection(this._configuration.Value.SQL_CONNECTION_STRING))
+        //{
             //  conn.Open();
 
             /*
@@ -37,6 +37,6 @@ public class ExampleRepository : IExampleRepository
             // return rowsAffected;
 
             return 1;
-        }
+        //}
     }
 }
