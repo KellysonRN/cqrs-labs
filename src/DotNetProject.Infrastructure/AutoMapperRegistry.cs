@@ -28,6 +28,7 @@ public class AutoMapperRegistry : ServiceRegistry
             });
             return config;
         }).Singleton();
+
         For<IMapper>().Use(ctx => ctx.GetInstance<MapperConfiguration>().CreateMapper(ctx.GetInstance)).Singleton();
     }
 }
