@@ -1,20 +1,39 @@
 # CQRS Microservice Lab
 
-## What is this?
+## Overview
 
-This will scaffold a new microservice with the following features:
-
-| Features |
-|---|
-| .NET 6.0  |
-| [Clean Architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)  |
-| [CQRS](https://martinfowler.com/bliki/CQRS.html)  |
-|  Docker File   |
-| [TDD](https://martinfowler.com/testing) |
-| [SOLID](https://itnext.io/solid-principles-sketches-a38865e771f0)
+This will template to create new microservices with Backstage and to show some how you can use some skills to improve your microservices.
 
 ## Requirements
 
-| Requirement |
-|---|
-| .NET 6.0 SDK  |
+The project requires [.NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+
+## Compatible IDEs
+
+Tested on:
+
+- Visual Studio Code (1.73.1)
+
+## Useful commands
+
+From the terminal/shell/command line tool, use the following commands to build, test and run the API.
+
+### Build the project
+
+```console
+$ dotnet build
+```
+
+### Run the tests
+
+```console
+$ dotnet test
+```
+
+### Run the application
+
+Run the application which will be listening on port `5000`.
+
+```console
+$ dotnet run --project DotNetProject
+```
