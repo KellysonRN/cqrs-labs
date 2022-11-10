@@ -1,4 +1,4 @@
-namespace DotNetProject.Infrastructure.SqlServer.Sql;
+namespace DotNetProject.Infrastructure.Sql;
 
 public class UpdateExampleNameById
 {
