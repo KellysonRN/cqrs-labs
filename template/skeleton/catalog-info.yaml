@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{values.component_id | dump}}
+  {%- if values.description %}
+  description: ${{values.description | dump}}
+  {%- endif %}
+  links:
+    - url: ${{"http://localhost:5000/swagger"}}
+      title: ${{values.component_id}}
+      icon: dashboard
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug:  ${{values.destination.owner + "/" + values.destination.repo}}
+    sonarqube.org/project-key: ${{values.component_id | dump}}
+    backstage.io/kubernetes-label-selector: "app"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: ${{values.owner | dump}}
+  providesApis:
+    - ${{values.component_id | dump}}
